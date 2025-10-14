@@ -62,4 +62,15 @@ INSERT INTO OrderDetails VALUES(303, 203, 3, 2);
 SELECT * FROM Products WHERE Stock_Quantity < 20;
 
 --2. To get amount spent by each customer
-SELECT First_Name, SUM(O.Order_Total) as Total_Amount_Spent FROM Customers C INNER JOIN Orders O on C.Customer_Id = O.Customer_Id GROUP BY C.First_Name; 
+SELECT First_Name, SUM(O.Order_Total) as Total_Amount_Spent 
+FROM Customers C INNER JOIN Orders O on C.Customer_Id = O.Customer_Id 
+GROUP BY C.First_Name; 
+
+--3. To update the product quantity
+UPDATE Products P
+SET P.Stock_Quantity = P.Stock_Quantity - (
+  SELECT SUM(OD.Quantity)
+  FROM OrderDetails OD
+  WHERE OD.Product_Id = P.Product_Id
+)
+WHERE P.Product_Id IN (SELECT DISTINCT Product_Id FROM OrderDetails);
