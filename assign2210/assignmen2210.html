@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <title>My Shopping Cart</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-inner">
+            <div class="brand">
+                <h1>Best Clothing Collection</h1>
+                <p class="tag">Quality streetwear &amp; essentials</p>
+            </div>
+
+            <!-- hamburger toggle -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+            <label for="nav-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+
+            <nav class="nav-links" id="primary-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="toolbar">
+            <div class="search">
+                <input type="search" placeholder="Search products, e.g. 'hoodie'" />
+            </div>
+            <div class="filters">
+                <label for="sort">Sort:</label>
+                <select id="sort" name="sort">
+                    <option value="popular">Popular</option>
+                    <option value="new">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+                <button class="btn btn-primary">Apply</button>
+            </div>
+        </section>
+
+        <section class="categories">
+            <ul>
+                <li class="active"><a href="#">All</a></li>
+                <li><a href="#">Hoodies</a></li>
+                <li><a href="#">Pants</a></li>
+                <li><a href="#">T-Shirts</a></li>
+                <li><a href="#">Jackets</a></li>
+                <li><a href="#">Shorts</a></li>
+            </ul>
+        </section>
+
+        <section class="products"">
+            <article class=" product-card">
+            <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                alt="Grey hoodie" />
+            <div class="product-info">
+                <h3 class="product-title">Classic Grey Hoodie</h3>
+                <p class="price">$49.00</p>
+                <p class="product-desc">Soft cotton blend, unisex fit. Available in sizes S-XXL.</p>
+                <div class="card-actions">
+                    <button class="btn">View</button>
+                    <button class="btn btn-primary">Add to cart</button>
+                </div>
+            </div>
+            </article>
+
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Blue jeans" />
+                <div class="product-info">
+                    <h3 class="product-title">Slim Blue Jeans</h3>
+                    <p class="price">$59.00</p>
+                    <p class="product-desc">Stretch denim for comfort and movement.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="White t-shirt" />
+                <div class="product-info">
+                    <h3 class="product-title">Premium White T-Shirt</h3>
+                    <p class="price">$19.00</p>
+                    <p class="product-desc">Breathable and durable everyday tee.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+            <article class="product-card">
+                <img src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SE9PRElFfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Black jacket" />
+                <div class="product-info">
+                    <h3 class="product-title">Lightweight Black Jacket</h3>
+                    <p class="price">$89.00</p>
+                    <p class="product-desc">Water-resistant with insulated lining.</p>
+                    <div class="card-actions">
+                        <button class="btn">View</button>
+                        <button class="btn btn-primary">Add to cart</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>&copy; 2025 Best Clothing Collection. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>
