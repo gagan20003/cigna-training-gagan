@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product details</title>
+</head>
+
+<body>
+    <h1>DAY 8 ASSIGNMENT - 2</h1>
+    <hr />
+    <fieldset>
+        <legend>Price with Discount</legend>
+        <label for="product-name">Product Name:</label>
+        <input type="text" id="product-name" name="product-name" required />
+        <br /> <br />
+        <label for="unit-price"> Unit Price:</label>
+        <input type="number" id="unit-price" name="unit-price" required />
+        <br /> <br />
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" required />
+        <br /> <br />
+        <button onclick="handleTotal()">Calculate</button>
+        <br /> <br />
+        <p id="info"></p>
+        <p id="error-message"></p>
+    </fieldset>
+
+
+    <script>
+
+        function handleTotal() {
+            if (confirm("Are you sure you want to find the total amount?")) {
+                let unitPrice = document.getElementById("unit-price").value;
+                let quantity = document.getElementById("quantity").value;
+                let name = document.getElementById("product-name").value;
+                document.getElementById("error-message").style.display = "none";
+
+                if (!unitPrice || !quantity) {
+                    document.getElementById("error-message").style.display = "block";
+                    document.getElementById("info").style.display = "none";
+                    document.getElementById("error-message").innerText = "Missing price or quantity or name";
+                    document.getElementById("error-message").style.backgroundColor = "red";
+                    document.getElementById("error-message").style.color = "white";
+                    return;
+                }
+
+                let total = unitPrice * quantity;
+
+                let finalPrice = 0;
+
+                if (quantity > 10) {
+                    finalPrice = total * 0.9;
+                }
+                else if (quantity > 20) {
+                    finalPrice = total * 0.85;
+                }
+                else if (quantity > 30) {
+                    finalPrice = total * 0.8;
+                }
+                else {
+                    finalPrice = total;
+                }
+                document.getElementById("info").style.display = "block";
+                document.getElementById("info").innerText = `Total Amount: ${finalPrice}`
+            }
+            else {
+                return;
+            }
+        }
+    </script>
+</body>
+
+</html>
