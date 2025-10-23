@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Login Form javascript Basics</h1>
+    <hr />
+    <fieldset>
+        <legend>User Login</legend>
+        <label for="uname">User Name: </label>
+        <input type="text" id="uname" name="uname" />
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" />
+        <button onclick="handleLogin()" id="login-btn">Login</button>
+        <p id="info"></p>
+        <p id="login-error"></p>
+    </fieldset>
+
+
+    <script>
+        let wrongAttemptCount = 0;
+
+
+        function handleLogin() {
+            const uname = document.getElementById("uname").value.trim();
+            const password = document.getElementById("password").value;
+            if (uname == "admin" && password == "admin123") {
+                document.getElementById("info").innerText = `Hello ${uname}, you have successfully logged in.`;
+                document.getElementById("info").style.color = "white";
+                document.getElementById("info").style.backgroundColor = "green";
+                document.getElementById("login-error").style.display = "none";
+            }
+            else {
+                document.getElementById("info").innerText = `Invalid login details`;
+                document.getElementById("info").style.color = "white";
+                document.getElementById("info").style.backgroundColor = "red";
+                wrongAttemptCount++;
+                document.getElementById("login-error").style.display = "block";
+                document.getElementById("login-error").innerText = `Login attempts remaining: ${3 - wrongAttemptCount}!`
+                document.getElementById("login-error").style.color = "red";
+            }
+            if (wrongAttemptCount === 3) {
+                alert("Cannot attempt login now. Maximum limit reached!!");
+                document.getElementById("login-btn").disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
