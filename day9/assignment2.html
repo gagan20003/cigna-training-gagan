@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 2px solid rgb(140 140 140);
+            width: 100%;
+        }
+
+        tr {
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid rgb(160 160 160);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Advanced JavaScript - ES6 (Array of Objects) - Table</h1>
+    <hr />
+
+    <button onclick="button1Click()">Show Table</button>
+    <hr />
+
+    <table id="student-table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Course</th>
+        </tr>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+
+
+    <script>
+
+        function button1Click() {
+
+            let studentsArray = [
+                { id: 10256, name: "Scott", course: "React" },
+                { id: 10257, name: "Scott", course: "Angular" },
+                { id: 10258, name: "Scott", course: "Vue" },
+                { id: 10259, name: "Scott", course: "Node" },
+                { id: 10260, name: "Scott", course: "Express" },
+                { id: 10258, name: "Scott", course: "Vue" },
+                { id: 10259, name: "Scott", course: "Node" },
+                { id: 10260, name: "Scott", course: "Express" },
+                { id: 10258, name: "Scott", course: "Vue" },
+                { id: 10259, name: "Scott", course: "Node" },
+                { id: 10260, name: "Scott", course: "Express" },
+                { id: 10258, name: "Scott", course: "Vue" },
+                { id: 10259, name: "Scott", course: "Node" },
+                { id: 10260, name: "Scott", course: "Express" },
+                { id: 10258, name: "Scott", course: "Vue" },
+                { id: 10259, name: "Scott", course: "Node" },
+                { id: 10260, name: "Scott", course: "Express" }
+            ];
+
+
+            let tableBody = document.getElementById("table-body");
+
+            let str = "";
+
+
+            for (let item of studentsArray) {
+                str += `<tr><td>${item.id}</td> <td>${item.name}</td> <td>${item.course}</td></tr>`
+            }
+            tableBody.innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>
