@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Meal Cost Calculator</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Meal Cost Calculator - Assignment 3</h2>
+        <hr />
+        <p class="muted">Enter the meal base cost; tip is 10% and tax is 8% of the base.</p>
+
+        <label for="base">Meal Base Cost</label>
+        <input id="base" type="number" placeholder="e.g. 25.50" />
+        <br /> <br />
+
+        <div class="row">
+            <button id="calc">Calculate</button>
+            <button id="reset" type="button">Reset</button>
+        </div>
+
+        <div id="message"></div>
+
+        <div id="output" class="result"></div>
+    </div>
+
+    <script>
+        (function () {
+            const TIP_PERCENT = 10;
+            const TAX_PERCENT = 8;
+
+            const baseEl = document.getElementById('base');
+            const calcBtn = document.getElementById('calc');
+            const resetBtn = document.getElementById('reset');
+            const output = document.getElementById('output');
+            const message = document.getElementById('message');
+            output.style.display = 'none';
+
+            function showError(msg) {
+                message.innerHTML = `<div class="error">${msg}</div>`;
+                output.style.display = 'none';
+            }
+
+            function clearMessages() {
+                message.innerHTML = '';
+            }
+
+            function formatCurrency(v) {
+                return '$' + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+
+            function calculate() {
+                clearMessages();
+                const raw = baseEl.value;
+                if (raw === '' || raw === null) {
+                    showError('Please enter the base cost of the meal.');
+                    baseEl.focus();
+                    return;
+                }
+
+                const base = parseFloat(raw);
+                if (isNaN(base) || base < 0) {
+                    showError('Base cost must be a number >= 0.');
+                    baseEl.focus();
+                    return;
+                }
+
+                const tip = base * (TIP_PERCENT / 100);
+                const tax = base * (TAX_PERCENT / 100);
+                const total = Math.round(base + tip + tax);
+
+                output.style.display = 'block';
+                output.innerText = '';
+                output.innerText += `Meals Base Cost : ${formatCurrency(base)}\n`;
+                output.innerText += `Tip Amount    : ${formatCurrency(tip)} (${TIP_PERCENT}%)\n`;
+                output.innerText += `Tax Amount    : ${formatCurrency(tax)} (${TAX_PERCENT}%)\n`;
+                output.innerText += `Total Amount  : ${formatCurrency(total)} (rounded)`;
+            }
+
+            calcBtn.addEventListener('click', calculate);
+            resetBtn.addEventListener('click', function () { baseEl.value = ''; clearMessages(); output.style.display = 'none'; baseEl.focus(); });
+
+            baseEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); calculate(); } });
+        })();
+    </script>
+</body>
+
+</html>
