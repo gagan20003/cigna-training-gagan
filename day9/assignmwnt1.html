@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Course List</title>
+</head>
+
+<body>
+    <h1>Course Manager</h1>
+
+    <label>Course name: <input id="course-input" type="text" /></label>
+    <br /><br />
+    <button onclick="onShow()">Show</button>
+    <button onclick="onAdd()">Add</button>
+    <button onclick="onRemove()">Remove</button>
+
+    <h2>Available Courses</h2>
+    <div id="message"></div>
+    <ol id="course-list"></ol>
+
+    <script>
+        const courses = ['Mathematics', 'Physics', 'Chemistry'];
+
+
+        function renderCourses() {
+            const list = document.getElementById('course-list');
+            list.innerHTML = '';
+            if (courses.length === 0) {
+                document.getElementById('message').textContent = 'No courses available.';
+                return;
+            }
+            document.getElementById('message').textContent = '';
+            courses.forEach((c) => {
+                const li = document.createElement('li');
+                li.textContent = c;
+                list.appendChild(li);
+            });
+        }
+
+        function onShow() {
+            renderCourses();
+        }
+
+        function onAdd() {
+            const input = document.getElementById('course-input');
+            const name = input.value.trim();
+            if (!name) {
+                alert('Please enter a course name to add.');
+                return;
+            }
+
+            const exists = courses.some(c => c.toLowerCase() === name.toLowerCase());
+            if (exists) {
+                alert('Course already exists.');
+                return;
+            }
+            courses.push(name);
+            input.value = '';
+            renderCourses();
+        }
+
+        function onRemove() {
+            const input = document.getElementById('course-input');
+            const name = input.value.trim();
+            if (!name) {
+                alert('Please enter the course name to remove.');
+                return;
+            }
+            const idx = courses.findIndex(c => c.toLowerCase() === name.toLowerCase());
+            if (idx === -1) {
+                alert('Course not found.');
+                return;
+            }
+            courses.splice(idx, 1);
+            input.value = '';
+            renderCourses();
+        }
+
+        renderCourses();
+    </script>
+</body>
+
+</html>
