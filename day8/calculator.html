@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Day 8 - Misc Functions</title>
+</head>
+
+<body>
+    <h1>Assignment 4</h1>
+
+    <!-- Average calculator -->
+    <section>
+        <h2>Average (total marks / number of subjects)</h2>
+        <label>Total marks: <input id="avg-total" type="number" step="any" /></label>
+        <br /> <br />
+        <label>No. of subjects: <input id="avg-count" type="number" step="1" /></label>
+        <br /> <br />
+        <button onclick="onAverageClick()">Compute Average</button>
+        <p id="avg-result"></p>
+    </section>
+
+    <hr />
+
+    <!-- Power calculator -->
+    <section>
+        <h2>Power (x ^ y)</h2>
+        <label>x: <input id="pow-x" type="number" step="any" /></label>
+        <br /> <br />
+        <label>y: <input id="pow-y" type="number" step="any" /></label>
+        <br /> <br />
+        <button onclick="onPowerClick()">Compute Power</button>
+        <p id="pow-result"></p>
+    </section>
+
+    <hr />
+
+    <!-- Word count -->
+    <section>
+        <h2>Word Count</h2>
+        <label>Enter text:<br />
+            <textarea id="wc-text" rows="4" cols="50"></textarea>
+        </label>
+        <br />
+        <button onclick="onWordCountClick()">Count Words</button>
+        <p id="wc-result"></p>
+    </section>
+
+    <script>
+        function computeAverage(totalMarks, subjectsCount) {
+            if (subjectsCount === 0 || isNaN(totalMarks) || isNaN(subjectsCount) || subjectsCount <= 0) return null;
+            return totalMarks / subjectsCount;
+        }
+
+        function computePower(x, y) {
+            x = Number(x);
+            y = Number(y);
+            if (isNaN(x) || isNaN(y)) return null;
+            return Math.pow(x, y);
+        }
+
+        function countWords(text) {
+            if (text == null) return 0;
+            const trimmed = String(text).trim();
+            if (trimmed === '') return 0;
+            return trimmed.split(/\s+/).length;
+        }
+
+        function onAverageClick() {
+            const totalRaw = document.getElementById('avg-total').value;
+            const countRaw = document.getElementById('avg-count').value;
+            const total = parseFloat(totalRaw);
+            const count = parseInt(countRaw, 10);
+
+            const result = computeAverage(total, count);
+            const out = document.getElementById('avg-result');
+            if (result === null) {
+                out.textContent = 'Invalid input — please enter total marks and a positive number of subjects.';
+            } else {
+                out.textContent = 'Average: ' + result.toFixed(2);
+            }
+        }
+
+        function onPowerClick() {
+            const xRaw = document.getElementById('pow-x').value;
+            const yRaw = document.getElementById('pow-y').value;
+            const result = computePower(xRaw, yRaw);
+            const out = document.getElementById('pow-result');
+            if (result === null || !isFinite(result)) {
+                out.textContent = 'Invalid input or result is not finite.';
+            } else {
+                out.textContent = 'Result: ' + result;
+            }
+        }
+
+        function onWordCountClick() {
+            const text = document.getElementById('wc-text').value;
+            const count = countWords(text);
+            const out = document.getElementById('wc-result');
+            out.textContent = 'Word count: ' + count;
+        }
+    </script>
+</body>
+
+</html>
