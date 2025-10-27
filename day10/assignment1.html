@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>TO DO LIST</title>
+    <style>
+        .list-item {
+            display: flex;
+            justify-content: left;
+            gap: 12px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .list-item button {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Adding Events Dynamically in JavaScript</h3>
+    <hr />
+
+    <fieldset>
+        <legend>Add Your Tasks here</legend>
+        <ul id="list1" style="border:2px solid blue; padding : 30px;">
+
+        </ul>
+
+    </fieldset>
+    <br />
+    <input id="t1" placeholder="New Task Info..." type="text" />
+    <button id="addButton">Add Task</button>
+
+    <script>
+
+        const listObj = document.getElementById("list1");
+        const btnObj = document.getElementById("addButton");
+
+
+
+
+        listObj.addEventListener("click", function (event) {
+            const li = event.target.closest('li');
+            if (!li || !listObj.contains(li)) return;
+            if (event.target.tagName === 'BUTTON') return;
+            const textSpan = li.querySelector('span.task-text');
+            if (!textSpan) return;
+            if (textSpan.style.textDecoration === 'line-through') {
+                textSpan.style.textDecoration = 'none';
+            } else {
+                textSpan.style.textDecoration = 'line-through';
+            }
+        });
+
+        btnObj.addEventListener("click", function (event) {
+            var listItemObj = document.createElement("LI");
+            var textObj = document.getElementById("t1");
+            listItemObj.className = 'list-item';
+            var textSpan = document.createElement('span');
+            textSpan.className = 'task-text';
+            textSpan.textContent = textObj.value;
+            listItemObj.appendChild(textSpan);
+            if (listItemObj.innerText == "") { alert("Please enter text to add") }
+            else {
+                listObj.appendChild(listItemObj);
+                textObj.value = "";
+                var deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.innerText = "Delete";
+                listItemObj.appendChild(deleteButton);
+                deleteButton.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    listObj.removeChild(listItemObj);
+                })
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>
