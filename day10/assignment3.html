@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product display</title>
+    <style>
+        input[type="text"],
+        input[type="url"] {
+            padding: 6px 8px;
+            margin: 4px 8px 4px 0;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+        }
+
+        #product-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .product-div {
+            width: 220px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff;
+        }
+
+        .product-div img {
+            max-width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .product-div h3 {
+            margin: 6px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .product-div p {
+            margin: 0;
+            font-size: 13px;
+            color: #333;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <label for="p-name">Name:</label>
+    <input type="text" placeholder="enter name of the product" id="p-name" />
+    <label for="p-url">Url:</label>
+    <input type="url" placeholder="url of the product" id="p-url" />
+    <label for="p-desc">Description:</label>
+    <input type="text" placeholder="description of the product" id="p-desc" />
+    <button id="add-product-btn">Add Product</button>
+
+    <section id="product-section">
+
+    </section>
+
+    <script>
+        const productObj = document.getElementById("product-section");
+        const addBtn = document.getElementById('add-product-btn');
+
+        addBtn.addEventListener('click', showProduct);
+
+        function showProduct() {
+            const productName = document.getElementById("p-name").value.trim();
+            const productUrl = document.getElementById("p-url").value.trim();
+            const productDesc = document.getElementById("p-desc").value.trim();
+
+            if (!productName) {
+                alert('Please enter a product name');
+                return;
+            }
+
+            const productDiv = document.createElement("div");
+            productDiv.className = "product-div";
+
+            const productImage = document.createElement("img");
+            if (productUrl) {
+                productImage.setAttribute("src", productUrl);
+                productImage.setAttribute("alt", productName);
+            } else {
+                productImage.setAttribute('alt', 'No image');
+            }
+
+            const productHeading = document.createElement("h3");
+            productHeading.innerText = productName;
+
+            const productDescription = document.createElement("p");
+            productDescription.innerText = productDesc;
+
+            productDiv.appendChild(productImage);
+            productDiv.appendChild(productHeading);
+            productDiv.appendChild(productDescription);
+
+            productObj.appendChild(productDiv);
+
+            document.getElementById("p-name").value = '';
+            document.getElementById("p-url").value = '';
+            document.getElementById("p-desc").value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Employee Table - Alternate Row Styles</title>
+</head>
+
+<body>
+    <h1>Employee Directory</h1>
+
+    <button id="apply-btn" onclick="applyStyles()">Apply Styles</button>
+
+    <table id="emp-table" border="1" cellpadding="6" cellspacing="0" style="margin-top:12px; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1001</td>
+                <td>Alice Johnson</td>
+                <td>Engineering</td>
+                <td>75000</td>
+            </tr>
+            <tr>
+                <td>1002</td>
+                <td>Bob Smith</td>
+                <td>Sales</td>
+                <td>62000</td>
+            </tr>
+            <tr>
+                <td>1003</td>
+                <td>Carol Lee</td>
+                <td>Marketing</td>
+                <td>68000</td>
+            </tr>
+            <tr>
+                <td>1004</td>
+                <td>David Kim</td>
+                <td>Engineering</td>
+                <td>80000</td>
+            </tr>
+            <tr>
+                <td>1005</td>
+                <td>Eva Green</td>
+                <td>HR</td>
+                <td>59000</td>
+            </tr>
+            <tr>
+                <td>1006</td>
+                <td>Frank Brown</td>
+                <td>Support</td>
+                <td>54000</td>
+            </tr>
+            <tr>
+                <td>1007</td>
+                <td>Grace Park</td>
+                <td>Finance</td>
+                <td>72000</td>
+            </tr>
+            <tr>
+                <td>1008</td>
+                <td>Henry Zhao</td>
+                <td>Sales</td>
+                <td>61000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        let stylesApplied = false;
+        function applyStyles() {
+            const table = document.getElementById('emp-table');
+            const btn = document.getElementById('apply-btn');
+            if (!table) return;
+
+            const tbodies = table.tBodies;
+            if (tbodies.length === 0) return;
+            const rows = tbodies[0].rows;
+
+            if (!stylesApplied) {
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    row.style.backgroundColor = (i % 2 === 0) ? 'red' : 'green';
+                }
+                stylesApplied = true;
+                if (btn) btn.textContent = 'Clear Styles';
+            } else {
+                for (let i = 0; i < rows.length; i++) {
+                    rows[i].style.backgroundColor = '';
+                }
+                stylesApplied = false;
+                if (btn) btn.textContent = 'Apply Styles';
+            }
+        }
+    </script>
+</body>
+
+</html>
